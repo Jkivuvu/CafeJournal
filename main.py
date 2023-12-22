@@ -33,6 +33,7 @@ class cafe(db.Model):
 
 
 with app.app_context():
+    db.create_all()
     @app.route('/')
     def index():
         names = db.session.execute(db.select(cafe).order_by(cafe.name)).scalars()
