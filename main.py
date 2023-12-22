@@ -4,13 +4,17 @@ from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from flask_sqlalchemy import SQLAlchemy
 from forms import add_coffee_form
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'Booba'
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
+if os.environ.get('LOCAL') == "True":
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
 db = SQLAlchemy()
 db.init_app(app)
 
