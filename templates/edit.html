@@ -1,0 +1,23 @@
+{% include "header.html" %}
+
+    <section class="d-flex h-200 bg py-5 flex-container">
+    <div class="row py-lg-5">
+      <div>
+        <h1 style = "font-weight: bold; color: white; font-position: center; font-position: center; padding: 100px 0px 100px 0px;">Edit Cafe</h1>
+        <p class="" style="font-weight: bold;"></p>
+        <p>
+
+        </p>
+      </div>
+    </div>
+  </section>
+    {% from "bootstrap5/form.html" import render_form %}
+</head>
+<body class="body-bg body-bg">
+    <div class="container flex-container_1">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {{render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+        </div>
+    </div>
+</body>
+{% include "footer.html" %}

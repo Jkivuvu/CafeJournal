@@ -1,0 +1,43 @@
+{% include "header.html" %}
+
+    <section class="d-flex h-100 bg py-5 flex-container">
+    <div class="row py-lg-5 flex-container_3">
+      <div class="col-lg-6 col-md-8 mx-auto" style="padding: 45px 0px 45px 0px;">
+        <h1 style = "font-weight: bold;">Welcome To Cafe Journal</h1>
+        <p class="lead" style="font-weight: bold; padding: 45px 0px 45px 0px;">Explore cafes that boast unique and charming atmospheres, perfect for catching up with friends, indulging in a quiet book, or even igniting your creativity. From minimalist chic to vintage vibes, we've curated a list that caters to every aesthetic preference.</p>
+        <p>
+          <a href="{{url_for('add_coffe')}}" class="btn btn-primary my-2">Add Cafe</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</head>
+<body class="body-bg body-bg">
+    <div class="container flex-container_1" style="padding: 45px 0px 45px 0px;">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for coffe in names %}
+            <div class="col">
+              <div class="card shadow-sm">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" src="{{coffe.img_url}}" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>{{coffe.name}}</title><rect width="100%" height="100%" fill="#55595c"></rect><text class="flex-container" x="50%" y="50%" fill="#eceeef" dy=".3em">{{coffe.name}}</text></img>
+                <div class="card-body flex-container bg-1">
+                  <p class="card-text"></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <a href="{{ url_for('show_cafe', cafe_id=coffe.id)}}">
+                      <button type="button" style="background-color: white;" class="btn btn-sm btn-outline-secondary border">Click To View</button>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+
+</body>
+<section>
+    <div>
+        {% include "footer.html" %}
+    </div>
+</section>

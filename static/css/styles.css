@@ -1,0 +1,70 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-weight: bold;
+
+}
+.flex-container_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+
+}
+
+.flex-container_2 {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    padding: 50px;
+
+}
+.flex-container_3 {
+    color: white;
+    font-weight: bold;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: center;
+    width: 50%;
+    padding: 20px;
+}
+
+.row::after {
+    content:"";
+    display: table;
+    clear: both;
+}
+
+.bg{
+    background-image: url('CoffeeSubscriptions.png');
+    background-size: 100% 150%;
+
+}
+
+
+.body-bg{
+    background-image: url('HD-wallpaper.png');
+        background-size: 200% 150%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: 50% 20%;
+}
+
+.bg-1{
+    background: linear-gradient(300deg, #f8c7b2, #a34c33, #ca7252);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+
+}
+
+.border{
+    border-color: black;
+    color: black;
+    }
