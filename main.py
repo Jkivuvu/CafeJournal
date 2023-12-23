@@ -26,7 +26,7 @@ class cafe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False, unique=True)
     map_url = db.Column(db.String(1000), nullable=False, unique=True)
-    img_url = db.Column(db.String(1000), nullable=False)
+    img_url = db.Column(db.String(1000), nullable=False, unique=True)
     location = db.Column(db.String(1000), nullable=False)
     has_sockets = db.Column(db.Integer, default=0, nullable=False)
     has_toilet = db.Column(db.Integer, default=0, nullable=False)
