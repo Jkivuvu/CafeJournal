@@ -1,10 +1,13 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from flask_sqlalchemy import SQLAlchemy
 from forms import add_coffee_form
-import os
+
+load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
@@ -34,6 +37,8 @@ class cafe(db.Model):
 
 with app.app_context():
     db.create_all()
+
+
 @app.route('/')
 def index():
     names = db.session.execute(db.select(cafe).order_by(cafe.name)).scalars()
@@ -77,10 +82,10 @@ def show_cafe(cafe_id):
 def edit_coffe(cafe_id):
     cafe_to_edit = db.get_or_404(cafe, cafe_id)
     edit_form = add_coffee_form(name=cafe_to_edit.name, map_url=cafe_to_edit.map_url, img_url=cafe_to_edit.img_url,
-                     location=cafe_to_edit.location, has_sockets=cafe_to_edit.has_sockets,
-                     has_toilet=cafe_to_edit.has_toilet,
-                     has_wifi=cafe_to_edit.has_wifi, can_take_calls=cafe_to_edit.can_take_calls,
-                     seats=cafe_to_edit.seats, coffee_price=cafe_to_edit.coffee_price)
+                                location=cafe_to_edit.location, has_sockets=cafe_to_edit.has_sockets,
+                                has_toilet=cafe_to_edit.has_toilet,
+                                has_wifi=cafe_to_edit.has_wifi, can_take_calls=cafe_to_edit.can_take_calls,
+                                seats=cafe_to_edit.seats, coffee_price=cafe_to_edit.coffee_price)
     if edit_form.validate_on_submit():
         cafe_to_edit.name = edit_form.name.data
         cafe_to_edit.map_url = edit_form.map_url.data
