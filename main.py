@@ -1,6 +1,5 @@
 import os
-from dotenv import load_dotenv
-import psycopg2
+
 from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
 from flask_bootstrap import Bootstrap5
@@ -8,7 +7,6 @@ from flask_ckeditor import CKEditor
 from flask_sqlalchemy import SQLAlchemy
 from forms import add_coffee_form
 
-load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
@@ -110,4 +108,4 @@ def delete_cafe(cafe_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
